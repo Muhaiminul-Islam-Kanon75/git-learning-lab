@@ -1,5 +1,8 @@
-from app.quiz import QUESTIONS
+from app.quiz import calculate_score
 
 
-def test_questions_exist():
-    assert len(QUESTIONS) > 0
+def test_score():
+    answers = [True, False, True]
+    assert calculate_score(answers) == 2
+
+

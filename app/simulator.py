@@ -1,17 +1,21 @@
 SUPPORTED_COMMANDS = {
-    "git init": "Initialized empty Git repository",
-    "git status": "Shows current repository status",
-    "git add": "Adds files to staging area",
-    "git commit": "Creates a snapshot commit",
-    "git push": "Uploads commits to remote repository",
+    "clone": "git clone <repo-url>",
+    "init": "git init",
+    "status": "git status",
+    "add": "git add .",
+    "commit": "git commit -m 'message'",
+    "push": "git push origin main",
 }
 
 
+def get_git_command(command: str):
+    return SUPPORTED_COMMANDS.get(command, "Unsupported command")
+
 
 def simulate_command(command: str):
-    response = SUPPORTED_COMMANDS.get(command)
+    result = get_git_command(command)
 
-    if response:
-        print(response)
+    if result != "Unsupported command":
+        print(result)
     else:
         print("Unsupported command")

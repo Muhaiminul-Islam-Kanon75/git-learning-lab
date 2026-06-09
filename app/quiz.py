@@ -6,8 +6,12 @@ QUESTIONS = [
     {
         "question": "Which command uploads local commits to GitHub?",
         "answer": "git push",
-    },
+    }
 ]
+
+
+def calculate_score(answers):
+    return sum(1 for a in answers if a is True)
 
 
 def start_quiz():
