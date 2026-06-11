@@ -6,6 +6,18 @@ QUESTIONS = [
     {
         "question": "Which command uploads local commits to GitHub?",
         "answer": "git push",
+    },
+    {
+        "question": "Which command stages changes for commit?",
+        "answer": "git add",
+    },
+    {
+        "question": "Which command saves staged changes with a message?",
+        "answer": "git commit",
+    },
+    {
+        "question": "Which command downloads changes from a remote repository?",
+        "answer": "git pull",
     }
 ]
 
