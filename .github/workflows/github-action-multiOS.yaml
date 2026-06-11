@@ -1,0 +1,44 @@
+name: github-quiz-multiOS
+
+on: 
+  push: 
+    branches:
+    - main
+    - staging
+  pull_request:
+
+jobs:
+  quiz-multiOS:
+    runs-on: ${{ matrix.os }} # matrix is must. os is independent var
+    strategy: 
+      matrix: 
+        os:  [ubuntu-latest, ubuntu-22.04]
+    
+    steps:
+    - name: check codes 
+      uses: actions/checkout@v4
+    - name: configure python v3.12
+      uses: actions/setup-python@v5 
+      with:
+        python-version: '3.12'
+
+    - name: install dependencies
+      run: pip install -r requirements.txt
+    - name: test 
+      run: pytest
+
+# To use multiple python version 
+# have to assign it under a variable 
+# strategy: 
+#   matrix: # default 
+#     os: [ os1, os2 ]
+#     python-version: ['py.v1', 'py.v2']
+# runs-on: $${{ matrix.os }}
+# steps: 
+# - name: 
+#   uses: action/setup-python@v5
+#   with: 
+#     python-version: ${{ matrix.python-version }}
+# 
+# 
+# 
