@@ -12,7 +12,7 @@ def test_start_quiz(monkeypatch, capsys):
         "git push",
         "git add",
         "git commit",
-        "git push",
+        "git pull",
     ]
 
     monkeypatch.setattr("builtins.input", lambda prompt="": user_inputs.pop(0))
