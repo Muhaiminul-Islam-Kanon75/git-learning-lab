@@ -17,4 +17,3 @@ def test_simulate_command_unsupported(capsys):
 
     captured = capsys.readouterr()
     assert captured.out.strip() == "Unsupported command"
-    
