@@ -1,6 +1,6 @@
 # Git Learning Lab
 
-A Python CLI application to learn:
+Python CLI application to learn:
 
 - Git
 - GitHub
