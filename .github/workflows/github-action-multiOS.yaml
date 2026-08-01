@@ -12,16 +12,18 @@ jobs:
     runs-on: ${{ matrix.os }} # matrix is must. os is independent var
     strategy: 
       matrix: 
-        os:  [ubuntu-latest, ubuntu-22.04]
+        os:  [ubuntu-latest, ubuntu-24.04]
+        py-vers: [3.11, 3.12]
     
     steps:
     - name: check codes 
       uses: actions/checkout@v4
-    - name: configure python v3.12
+    - name: Configure Python ${{ matrix.py-vers }}
       uses: actions/setup-python@v5 
       with:
-        python-version: '3.12'
-
+        python-version: ${{ matrix.py-vers }}
+    - name: Upgrade pip
+      run: python -m pip install --upgrade pip
     - name: install dependencies
       run: pip install -r requirements.txt
     - name: test 
