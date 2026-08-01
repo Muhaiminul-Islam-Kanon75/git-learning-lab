@@ -9,18 +9,19 @@ on:
 
 jobs:
   quiz-multiOS:
-    runs-on: ${{ matrix.os }} # matrix is must. os is independent var
+    runs-on: ubuntu-22.04 
     strategy: 
-      matrix: 
-        os:  [ubuntu-latest, ubuntu-22.04]
+      matrix: # matrix is must. os/py-vers(python version) is a independent variable
+        # os:  [ubuntu-latest, ubuntu-22.04]
+        py-vers: ['Python 3.11', 'Python 3.12', 'Python 3.14']
     
     steps:
     - name: check codes 
       uses: actions/checkout@v4
-    - name: configure python v3.12
+    - name: configure multiple python versions 
       uses: actions/setup-python@v5 
       with:
-        python-version: '3.12'
+        python-version: ${{ matrix.py-vers }}
 
     - name: install dependencies
       run: pip install -r requirements.txt
@@ -30,7 +31,7 @@ jobs:
 # To use multiple python version 
 # have to assign it under a variable 
 # strategy: 
-#   matrix: # default 
+#   matrix: # matrix is must. os/py-vers(python version) is a independent variable
 #     os: [ os1, os2 ]
 #     python-version: ['py.v1', 'py.v2']
 # runs-on: $${{ matrix.os }}
